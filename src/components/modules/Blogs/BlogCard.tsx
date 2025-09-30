@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,6 +19,7 @@ export type BlogCardProps = {
 
 
 export default function BlogCard({ post }: { post: BlogCardProps["post"] }) {
+  // console.log(post)
   return (
     <Link
       href={`/blogs/${post._id}`}

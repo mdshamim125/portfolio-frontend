@@ -4,7 +4,6 @@ import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import {
   Form,
   FormControl,
@@ -13,7 +12,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { login } from "@/actions/auth";
 import { toast } from "sonner";
 
 // type LoginFormValues = {
@@ -31,9 +29,22 @@ export default function LoginForm() {
 
   const onSubmit = async (values: FieldValues) => {
     try {
-      const res = await login(values);
-      console.log(res);
-      if (res?.success) {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_API}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+          credentials: "include", // ensures cookies from server are set in browser
+        }
+      );
+
+      const data = await res.json();
+      console.log(data);
+
+      if (res.ok && data?.success) {
         toast.success("User Logged in Successfully");
       } else {
         toast.error("User Login Failed");
@@ -42,8 +53,6 @@ export default function LoginForm() {
       console.error(err);
     }
   };
-
-
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
@@ -96,21 +105,8 @@ export default function LoginForm() {
             <Button type="submit" className="w-full mt-2">
               Login
             </Button>
-
-            <div className="flex items-center justify-center space-x-2">
-              <div className="h-px w-16 bg-gray-300" />
-              <span className="text-sm text-gray-500">or continue with</span>
-              <div className="h-px w-16 bg-gray-300" />
-            </div>
           </form>
         </Form>
-        {/* Social Login Buttons */}
-        <p className="text-center text-sm text-gray-500 mt-4">
-          Don’t have an account?{" "}
-          <Link href="/register" className="text-blue-500 hover:underline">
-            Register
-          </Link>
-        </p>
       </div>
     </div>
   );

@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
-import { BlogCardProps } from "./BlogCard";
 
 type BlogDetailsCardProps = {
   blog: {
@@ -16,7 +14,13 @@ type BlogDetailsCardProps = {
   };
 };
 
-export default function BlogDetailsCard({ blog }: BlogDetailsCardProps) {
+export default function BlogDetailsCard({
+  blog,
+}: {
+  blog: BlogDetailsCardProps["blog"];
+}) {
+  // console.log("Blog data:", blog);
+
   return (
     <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden">
       {/* Thumbnail */}

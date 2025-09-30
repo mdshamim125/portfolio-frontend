@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 type ProjectDetailsCardProps = {
   project: {
@@ -29,7 +30,7 @@ const ProjectDetailsCard = ({ project }: ProjectDetailsCardProps) => {
         <CardTitle>{project.title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <img
+        <Image
           src={project.imageUrl}
           alt={project.title}
           className="rounded-lg mb-4 w-full h-60 object-cover"
@@ -58,10 +59,7 @@ const ProjectDetailsCard = ({ project }: ProjectDetailsCardProps) => {
           <h3 className="font-semibold">Technologies</h3>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-1 text-xs rounded bg-gray-200"
-              >
+              <span key={idx} className="px-2 py-1 text-xs rounded bg-gray-200">
                 {tech}
               </span>
             ))}

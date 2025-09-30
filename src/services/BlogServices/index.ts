@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // export const getBlogById = async (blogId: string) => {
 //   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/post/${blogId}`);
 //   return await res.json();
@@ -18,16 +19,24 @@ export const createBlog = async (blogData: any) => {
 // Get all blogs
 export const getAllBlogs = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {
-    cache: "no-store", // prevents stale cache in Next.js (optional)
+    cache: "no-store",
   });
-  return await res.json();
+  const { data } = await res.json(); 
+  return data; // return only blogs
 };
+
+
 
 // Get blog by ID
 export const getBlogById = async (blogId: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${blogId}`);
-  return await res.json();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${blogId}`, {
+    cache: "no-store", // avoid stale data
+  });
+  const { data } = await res.json(); 
+  return data;
 };
+
+
 
 // Update blog
 export const updateBlog = async (blogId: string, blogData: any) => {

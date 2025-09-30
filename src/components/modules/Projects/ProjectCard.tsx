@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 type ProjectCardProps = {
   project: {
@@ -37,10 +38,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <CardTitle className="line-clamp-1">{project.title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <img
+        <Image
           src={project.imageUrl}
           alt={project.title}
-          className="rounded-lg mb-3 w-full h-40 object-cover"
+          className="rounded-lg mb-3 w-full object-cover"
+          height={400}
+          width={400}
         />
         <p className="line-clamp-3 text-muted-foreground mb-3">
           {project.shortDesc}
