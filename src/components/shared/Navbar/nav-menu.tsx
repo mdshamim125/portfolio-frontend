@@ -4,6 +4,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 
 export const NavMenu = (props: NavigationMenuProps) => (
