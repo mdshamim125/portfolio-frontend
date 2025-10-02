@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 export default async function Hero() {
+
+
   return (
     <div>
       <div className="max-h-screen w-full relative">

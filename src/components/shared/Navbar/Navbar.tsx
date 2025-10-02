@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
-import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
 
@@ -12,7 +11,8 @@ const Navbar = () => {
       <div className="flex h-full items-center justify-between px-6 md:px-8">
         {/* Logo with consistent padding */}
         <Link href="/" className="flex-shrink-0 ">
-          <Logo />
+          {/* <Logo /> */}
+          <p>shamim </p>
         </Link>
 
         {/* Desktop Menu with consistent horizontal spacing */}

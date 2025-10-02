@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { signIn } from "next-auth/react";
 
 // type LoginFormValues = {
 //   email: string;
@@ -29,28 +30,24 @@ export default function LoginForm() {
 
   const onSubmit = async (values: FieldValues) => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-          credentials: "include", // ensures cookies from server are set in browser
-        }
-      );
+      const result = await signIn("credentials", {
+        redirect: false, // important to get the result
+        email: values.email,
+        password: values.password,
+      });
 
-      const data = await res.json();
-      console.log(data);
+      console.log("SignIn result:", result);
 
-      if (res.ok && data?.success) {
-        toast.success("User Logged in Successfully");
-      } else {
-        toast.error("User Login Failed");
-      }
+      // if (result?.error) {
+      //   toast.error("Login Failed: " + result.error);
+      // } else {
+      //   toast.success("User Logged in Successfully");
+      //   // Manually redirect if you want
+      //   window.location.href = "/dashboard";
+      // }
     } catch (err) {
       console.error(err);
+      toast.error("User Login Failed");
     }
   };
 

@@ -4,12 +4,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { getUserSession } from "@/helpers/getUserSession";
-import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
-
-const session = getUserSession();
-console.log(session);
 
 export const NavMenu = (props: NavigationMenuProps) => (
   <NavigationMenu {...props}>
