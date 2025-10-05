@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Eye, Pencil, Trash } from "lucide-react";
 
 type Blog = {
   _id: string;
@@ -57,7 +59,7 @@ const ViewAllBlogs = () => {
               <TableHead>Author</TableHead>
               <TableHead>Category</TableHead>
               <TableHead>Date</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="text-center">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -70,15 +72,24 @@ const ViewAllBlogs = () => {
                   <TableCell>
                     {new Date(blog.createdAt).toLocaleDateString()}
                   </TableCell>
-                  <TableCell className="text-right space-x-2">
-                    <Button variant="outline" size="sm">
-                      View
+                  <TableCell className="text-center flex justify-between items-center space-x-2">
+                    {/* View Details */}
+                    <Button asChild variant="outline" size="icon">
+                      <Link href={`/blogs/${blog._id}`}>
+                        <Eye className="h-4 w-4" />
+                      </Link>
                     </Button>
-                    <Button variant="outline" size="sm">
-                      Edit
+
+                    {/* Edit Blog */}
+                    <Button asChild variant="outline" size="icon">
+                      <Link href={`/dashboard/edit-blog/${blog._id}`}>
+                        <Pencil className="h-4 w-4" />
+                      </Link>
                     </Button>
-                    <Button variant="destructive" size="sm">
-                      Delete
+
+                    {/* Delete Blog */}
+                    <Button variant="destructive" size="icon">
+                      <Trash className="h-4 w-4" />
                     </Button>
                   </TableCell>
                 </TableRow>
