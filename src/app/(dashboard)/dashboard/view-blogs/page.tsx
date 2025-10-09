@@ -12,7 +12,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Eye, Pencil, Trash } from "lucide-react";
+import { Pencil, Trash } from "lucide-react";
 
 type Blog = {
   _id: string;
@@ -73,19 +73,11 @@ const ViewAllBlogs = () => {
                     {new Date(blog.createdAt).toLocaleDateString()}
                   </TableCell>
                   <TableCell className="text-center flex justify-between items-center space-x-2">
-                    {/* View Details */}
-                    <Button asChild variant="outline" size="icon">
-                      <Link href={`/blogs/${blog._id}`}>
-                        <Eye className="h-4 w-4" />
-                      </Link>
-                    </Button>
 
                     {/* Edit Blog */}
-                    <Button asChild variant="outline" size="icon">
-                      <Link href={`/dashboard/edit-blog/${blog._id}`}>
+                    <Link href={`/edit-blog/${blog._id}`}>
                         <Pencil className="h-4 w-4" />
-                      </Link>
-                    </Button>
+                    </Link>
 
                     {/* Delete Blog */}
                     <Button variant="destructive" size="icon">

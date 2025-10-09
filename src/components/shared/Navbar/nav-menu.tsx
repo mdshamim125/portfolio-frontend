@@ -11,7 +11,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const NavMenu = (props: any) => (
-  <nav className="flex items-center justify-between w-full px-4 py-2 bg-transparent">
+  <nav className="flex items-center justify-between w-full">
+    {/* Logo */}
     <Link href="/" className="flex items-center gap-3 relative">
       <div className="relative">
         <Image
@@ -27,29 +28,26 @@ export const NavMenu = (props: any) => (
       <span className="font-semibold text-lg text-sky-600 hidden sm:block">Shamim</span>
     </Link>
 
+    {/* Desktop Links */}
     <NavigationMenu {...props}>
-      <NavigationMenuList className="gap-6 font-medium">
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/">Home</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/projects">Projects</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/blogs">Blogs</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/about">About</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-
+      <NavigationMenuList className="gap-8 font-medium">
+        {[
+          { href: "/", label: "Home" },
+          { href: "/projects", label: "Projects" },
+          { href: "/blogs", label: "Blogs" },
+          { href: "/about", label: "About" },
+        ].map((item) => (
+          <NavigationMenuItem key={item.href}>
+            <NavigationMenuLink asChild>
+              <Link
+                href={item.href}
+                className="text-gray-700 dark:text-gray-300 hover:text-sky-500 transition-colors"
+              >
+                {item.label}
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   </nav>

@@ -27,7 +27,7 @@ const ProjectDetailsPage = async ({
   const { projectId } = await params; // ✅ await params
   const project = await getProjectById(projectId);
 
-  console.log(project)
+//   console.log(project)
 
   if (!project) {
     return (

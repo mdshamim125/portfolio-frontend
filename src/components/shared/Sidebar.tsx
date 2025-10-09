@@ -13,7 +13,7 @@ export default function Sidebar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Mobile top bar with menu button */}
-      <div className="md:hidden flex items-center justify-between bg-black text-white px-4 py-3 border-b">
+      <div className="lg:hidden flex items-center justify-between bg-black text-white px-4 py-3 border-b">
         <h1 className="text-lg font-semibold">Dashboard</h1>
         <button onClick={() => setIsOpen(true)}>
           <Menu className="h-6 w-6" />
@@ -24,10 +24,10 @@ export default function Sidebar() {
       <div
         className={`fixed inset-y-0 left-0 z-50 w-64 bg-black text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:flex md:flex-col`}
+        } transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:flex lg:flex-col`}
       >
         {/* Close button (only mobile) */}
-        <div className="flex items-center justify-between px-4 py-3 border-b md:hidden">
+        <div className="flex items-center justify-between px-4 py-3 border-b lg:hidden">
           <h2 className="text-lg font-semibold">Menu</h2>
           <button onClick={() => setIsOpen(false)}>
             <X className="h-6 w-6" />
@@ -87,7 +87,7 @@ export default function Sidebar() {
       {/* Background overlay when drawer is open on mobile */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}

@@ -13,7 +13,7 @@ export default function DashboardLayout({
       </aside>
 
       {/* Content */}
-      <section className="flex-1 p-4">{children}</section>
+      <section className="flex-1 p-4 overflow-x-auto">{children}</section>
     </main>
   );
 }

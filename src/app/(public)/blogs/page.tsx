@@ -10,12 +10,25 @@ export const metadata: Metadata = {
 };
 
 const AllBlogsPage = async () => {
-  const blogs = await getAllBlogs(); // ✅ now returns array directly
-// console.log(blogs)
+  const blogs = await getAllBlogs();
+
   return (
-    <div className="py-30 px-4 max-w-7xl mx-auto">
-      <h2 className="text-center text-4xl">All Blogs</h2>
-      <div className="grid grid-cols-3 gap-4 mx-auto max-w-6xl my-5">
+    <div className="py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <h2 className="text-center text-3xl sm:text-4xl font-semibold mb-10">
+        All Blogs
+      </h2>
+
+      <div
+        className="
+          grid 
+          grid-cols-1 
+          sm:grid-cols-2 
+          lg:grid-cols-3 
+          gap-6 
+          sm:gap-8
+          place-items-center
+        "
+      >
         {blogs.map((blog: any) => (
           <BlogCard key={blog._id} post={blog} />
         ))}
