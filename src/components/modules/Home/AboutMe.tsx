@@ -7,14 +7,14 @@ import {
   FaGraduationCap,
 } from "react-icons/fa";
 
-import { personalInfo } from "./../../../lib/data/personalInfo";
+import { personalInfo } from "../../../lib/data/personalInfo";
 import Contact from "./Contact";
 
-type HeroProps = {
+type AboutMeProps = {
   personal: typeof personalInfo;
 };
 
-const Hero = ({ personal }: HeroProps) => {
+const AboutMe = ({ personal }: AboutMeProps) => {
   return (
     <>
       {/* Hero Section */}
@@ -102,7 +102,7 @@ const Hero = ({ personal }: HeroProps) => {
       {/* About Section */}
       <section
         id="about"
-        className="py-24 bg-slate-800 relative overflow-hidden"
+        className="py-24 bg-slate-900 relative overflow-hidden"
       >
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-sky-700/5 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-indigo-700/5 rounded-full blur-3xl"></div>
@@ -226,8 +226,64 @@ const Hero = ({ personal }: HeroProps) => {
           </div>
         </div>
       </section>
+
+      {/* Skills Section */}
+      <section
+        id="skills"
+        className="py-24 bg-slate-900 relative overflow-hidden"
+      >
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-sky-700/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-indigo-700/5 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto px-6 max-w-6xl">
+          {/* Section Heading */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4 relative inline-block">
+              <span className="relative z-10">Technical Skills</span>
+              <span className="absolute bottom-1 left-0 w-full h-3 bg-sky-600/20 -z-10 transform -rotate-1"></span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              A curated set of technologies and tools I use to build scalable,
+              high-performance applications.
+            </p>
+          </div>
+
+          {/* Skills Grid */}
+          <div className="space-y-16">
+            {personal?.skills?.map((category, i) => (
+              <div key={i}>
+                {/* Category Title */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
+                    <FaCode className="text-sky-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">
+                    {category.name}
+                  </h3>
+                </div>
+
+                {/* Skill Badges */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {category.items.map((skill, index) => (
+                    <div
+                      key={index}
+                      className="group bg-gray-800/50 backdrop-blur-md rounded-xl border border-gray-700 shadow-lg 
+                p-6 flex flex-col items-center text-center transform transition-transform duration-500 ease-out 
+                hover:scale-110 hover:-translate-y-2 hover:border-sky-500 hover:shadow-sky-500/40"
+                    >
+                      <span className="text-lg font-medium text-white transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:text-sky-400">
+                        {skill}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 };
 
-export default Hero;
+export default AboutMe;

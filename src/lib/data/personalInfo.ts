@@ -1,15 +1,20 @@
 export const personalInfo = {
   name: "Md Shamim",
-  title: "MERN Stack Developer",
+  title: "Full-Stack Developer",
   bio: [
-    "I am a passionate full-stack web developer specializing in modern, high-performance web applications using React, Node.js, Express, and MongoDB.",
-    "I love crafting user-centric, scalable, and responsive designs that bring ideas to life. I’m always eager to learn new technologies and take on challenging projects.",
+    "I specialize in building modern web applications using the MERN stack (MongoDB, Express, React, Node.js) along with TypeScript for type-safe development.",
+    "Experienced in state management with Redux Toolkit & RTK Query, and comfortable working with relational databases like PostgreSQL.",
+    "I’m passionate about clean code, optimized user experiences, and delivering solutions that truly meet client needs.",
   ],
-  projects: "30+ Projects",
+  about: `As a Full-Stack Developer, I enjoy transforming ideas into real-world digital experiences.
+  My focus is on building scalable, maintainable, and user-friendly web solutions.
+  I love working in collaborative environments and continuously learning modern technologies
+  to stay up-to-date with industry trends.`,
   education: {
-    degree: "BSc in Computer Science and Engineering",
+    degree: "BSc in CSE",
     university: "Begum Rokeya University, Rangpur",
   },
+  projects: "10+ Projects",
   contact: {
     email: "cse12005038brur@gmail.com",
     phone: "+8801710534833",
@@ -22,4 +27,36 @@ export const personalInfo = {
   },
   image: "https://i.ibb.co/1M7JsS2/profile-bg-Copy.jpg",
   profile: "/assets/facebook_profile_2.jpg",
+
+  skills: [
+    {
+      name: "Frontend Development",
+      items: [
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "JavaScript",
+        "TypeScript",
+        "React.js",
+        "Redux Toolkit",
+        "RTK Query",
+        "Next.js",
+      ],
+    },
+    {
+      name: "Backend Development",
+      items: [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "PostgreSQL",
+        "MySQL",
+      ],
+    },
+    {
+      name: "Programming Languages",
+      items: ["C", "C++", "Python", "Java"],
+    },
+  ],
 };
